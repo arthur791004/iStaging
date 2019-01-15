@@ -17,6 +17,8 @@
     "react-dom": "~16.7.0"
   },
   "scripts": {
+    "preinstall": "unlink node_modules/@",
+    "postinstall": "ln -sf ../src node_modules/@",
     "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
