@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 
 import getOwnPropsParams from '@/utils/getOwnPropsParams';
 import withStores from '@/providers/StoresProvider/withStores';
+import LazyPanoramasVR from '@/components/PanoramasVR/Lazy';
 
 const stores = ['panoramases'];
 
@@ -20,17 +21,16 @@ class PanoramasList extends React.Component {
   render() {
     const buildingID = getOwnPropsParams(this.props, 'buildingID');
     const { panoramases } = this.props.stores;
+    const panoramasList = panoramases.selectPanoramasList(buildingID);
 
-    if (panoramases.isLoading) {
+    if (panoramases.isLoading || panoramasList.length === 0) {
       return <div>Loading...</div>;
     }
 
-    const panoramasList = panoramases.getPanoramasListByID(buildingID);
-
     return (
-      <div>
-        {JSON.stringify(panoramasList)}
-      </div>
+      <React.Suspense fallback="Loading...">
+        <LazyPanoramasVR src={panoramases.getPanoramasURL(panoramasList[0])} />
+      </React.Suspense>
     );
   }
 }

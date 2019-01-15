@@ -1,4 +1,5 @@
 import { action, observable } from 'mobx';
+import { createTransformer } from 'mobx-utils';
 
 import Firebase from '@/services/Firebase';
 import { NAME, ORDER_KEY } from './constants';
@@ -9,11 +10,13 @@ class Panoramases {
   @observable panoramases = {};
   @observable buildings = {};
 
-  getPanoramasListByID(buildingID) {
+  getPanoramasURL = panoramas => panoramas.data.desktopUrl;
+
+  selectPanoramasList = createTransformer((buildingID) => {
     const panoramases = this.buildings[buildingID] || [];
 
-    return panoramases.map(panoramasID => this.panoramases[panoramasID]);
-  }
+    return panoramases.map(panoramasID => this.panoramases[panoramasID] || {});
+  });
 
   @action.bound
   getBuildingByID(buildingID) {
@@ -29,7 +32,10 @@ class Panoramases {
 
     refPanoramas.once('value')
       .then((snapshot) => {
-        this.setBuilding(buildingID, snapshot.val());
+        const panoramases = snapshot.val();
+
+        this.setBuilding(buildingID, panoramases);
+        this.setPanoramases(panoramases);
         this.setIsLoading(false);
       });
   }
@@ -37,7 +43,6 @@ class Panoramases {
   @action.bound
   setBuilding(buildingID, panoramases) {
     this.buildings[buildingID] = Object.keys(panoramases);
-    this.setPanoramases(panoramases);
   }
 
   @action.bound
