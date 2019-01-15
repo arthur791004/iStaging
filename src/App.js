@@ -1,11 +1,13 @@
 import React from 'react';
 
 import DevTools from '@/components/DevTools';
+import Building from '@/containers/Building';
 
 const App = () => (
   <React.Fragment>
     <DevTools />
-    <div>Sample111</div>
+    {/* TODO: get id from routers; */}
+    <Building buildingID="483490" />
   </React.Fragment>
 );
 

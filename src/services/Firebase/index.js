@@ -30,7 +30,7 @@ class Firebase {
     }
 
     if (!this.ref[name]) {
-      this.ref[name] = this.db.ref(name);
+      this.ref[name] = this.db.ref(`/${name}`);
     }
 
     return this.ref[name];
