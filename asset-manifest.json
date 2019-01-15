@@ -1,11 +1,11 @@
 {
-  "main.js": "/static/js/main.b0e1b9ea.chunk.js",
-  "main.js.map": "/static/js/main.b0e1b9ea.chunk.js.map",
-  "static/js/1.ac5061da.chunk.js": "/static/js/1.ac5061da.chunk.js",
-  "static/js/1.ac5061da.chunk.js.map": "/static/js/1.ac5061da.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.7f39bfd56157d318eeec1bf4685583f9.js": "/precache-manifest.7f39bfd56157d318eeec1bf4685583f9.js",
-  "service-worker.js": "/service-worker.js"
+  "main.js": "/iStaging/static/js/main.b0e1b9ea.chunk.js",
+  "main.js.map": "/iStaging/static/js/main.b0e1b9ea.chunk.js.map",
+  "static/js/1.ac5061da.chunk.js": "/iStaging/static/js/1.ac5061da.chunk.js",
+  "static/js/1.ac5061da.chunk.js.map": "/iStaging/static/js/1.ac5061da.chunk.js.map",
+  "runtime~main.js": "/iStaging/static/js/runtime~main.af0d4dbb.js",
+  "runtime~main.js.map": "/iStaging/static/js/runtime~main.af0d4dbb.js.map",
+  "index.html": "/iStaging/index.html",
+  "precache-manifest.dd3728a3d5ac2713e309521753c2e261.js": "/iStaging/precache-manifest.dd3728a3d5ac2713e309521753c2e261.js",
+  "service-worker.js": "/iStaging/service-worker.js"
 }
