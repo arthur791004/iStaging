@@ -1,0 +1,106 @@
+version: 2
+
+references:
+  docker_default: &docker_default
+    environment:
+      TZ: "/usr/share/zoneinfo/Asia/Taipei"
+    docker:
+      - image: circleci/node:10.15.0-stretch
+  yarn_cache_key: &yarn_cache_key
+    yarn-cache-{{ checksum "yarn.lock" }}
+  restore_yarn_cache: &restore_yarn_cache
+    restore_cache:
+      key: *yarn_cache_key
+  build_cache_key: &build_cache_key
+    build-cache-{{ checksum "version.json" }}
+  restore_build: &restore_build
+    restore_cache:
+      key: *build_cache_key
+  persist_to_workspace: &persist_to_workspace
+    persist_to_workspace:
+      root: .
+      paths:
+        - ./*
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: .
+
+jobs:
+  bootstrap:
+    <<: *docker_default
+    steps:
+      - checkout
+      - run:
+          name: setup env
+          command: |
+            echo "{\"SHA1\":\"${CIRCLE_SHA1}\",\"DATE\":\"$(date)\"}" > ./version.json
+      - *persist_to_workspace
+      - *restore_yarn_cache
+      - run:
+          name: yarn dependencies
+          command: yarn install
+      - save_cache:
+         key: *yarn_cache_key
+         paths:
+           - .cache/yarn
+           - node_modules
+
+  build:
+    <<: *docker_default
+    steps:
+      - *attach_workspace
+      - *restore_yarn_cache
+      - run:
+          name: build
+          command: |
+            yarn run build
+      - save_cache:
+         key: *build_cache_key
+         paths:
+           - build
+
+  deploy:
+    <<: *docker_default
+    steps:
+      - *attach_workspace
+      - *restore_yarn_cache
+      - *restore_build
+      - run:
+          name: setup github
+          command: |
+            if [ ! -f ~/.ssh/known_hosts ]; then
+              mkdir -p ~/.ssh
+              touch ~/.ssh/known_hosts
+            fi
+            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+            git config --global user.email "arthur791004@gmail.com"
+            git config --global user.name "arthur791004"
+      - run:
+          name: deploy
+          command: |
+            yarn run deploy
+
+#
+# by default, circle-ci will execute job with all branches, but NOT tags
+# to execute job with tag, will need to define tags explicitly
+# for more detail, please see the following example for "workflows"
+#
+# reference:
+# - https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
+#
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - bootstrap:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      - build:
+          requires:
+            - bootstrap
+      - deploy:
+          requires:
+            - build
