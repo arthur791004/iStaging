@@ -30,6 +30,7 @@
     "mobx": "~5.8.0",
     "mobx-react": "~5.4.3",
     "mobx-utils": "~5.1.0",
+    "polished": "~2.3.3",
     "prop-types": "~15.6.2",
     "react": "~16.7.0",
     "react-dom": "~16.7.0",

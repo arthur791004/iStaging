@@ -5,6 +5,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     width: 100%;
     height: 100%;
+    padding: 0;
+    margin: 0;
     overflow: hidden;
   }
 
@@ -14,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #root {
+    position: relative;
     height: 100%;
     overflow-y: auto;
   }

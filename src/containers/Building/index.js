@@ -5,12 +5,17 @@ import { observer } from 'mobx-react';
 import getOwnPropsParams from '@/utils/getOwnPropsParams';
 import withStores from '@/providers/StoresProvider/withStores';
 import LazyPanoramasVR from '@/components/PanoramasVR/Lazy';
+import LazyPanoramasList from '@/components/PanoramasList/Lazy';
 
 const stores = ['panoramases'];
 
 @withStores(stores)
 @observer
 class PanoramasList extends React.Component {
+  state = {
+    selected: 0,
+  };
+
   componentDidMount() {
     const buildingID = getOwnPropsParams(this.props, 'buildingID');
     const { panoramases } = this.props.stores;
@@ -18,19 +23,35 @@ class PanoramasList extends React.Component {
     panoramases.getBuildingByID(buildingID);
   }
 
+  handleChange = (selected) => {
+    this.setState({ selected });
+  }
+
   render() {
     const buildingID = getOwnPropsParams(this.props, 'buildingID');
     const { panoramases } = this.props.stores;
+    const { selected } = this.state;
     const panoramasList = panoramases.selectPanoramasList(buildingID);
 
     if (panoramases.isLoading || panoramasList.length === 0) {
       return <div>Loading...</div>;
     }
 
+    const { src } = panoramasList[selected];
+
     return (
-      <React.Suspense fallback="Loading...">
-        <LazyPanoramasVR src={panoramases.getPanoramasURL(panoramasList[0])} />
-      </React.Suspense>
+      <React.Fragment>
+        <React.Suspense fallback="">
+          <LazyPanoramasVR src={src} />
+        </React.Suspense>
+        <React.Suspense fallback="Loading...">
+          <LazyPanoramasList
+            panoramasList={panoramasList}
+            selected={selected}
+            handleClick={this.handleChange}
+          />
+        </React.Suspense>
+      </React.Fragment>
     );
   }
 }

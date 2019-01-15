@@ -4,18 +4,33 @@ import { createTransformer } from 'mobx-utils';
 import Firebase from '@/services/Firebase';
 import { NAME, ORDER_KEY } from './constants';
 
+const formatPanoramas = (panoramas) => {
+  if (!panoramas) {
+    return {};
+  }
+
+  const { data: { index, desktopUrl, thumbnail, category } } = panoramas;
+
+  return {
+    index,
+    thumbnail,
+    category,
+    src: desktopUrl,
+  };
+};
+
 class Panoramases {
   @observable isLoading = false;
   @observable error = null;
   @observable panoramases = {};
   @observable buildings = {};
 
-  getPanoramasURL = panoramas => panoramas.data.desktopUrl;
-
   selectPanoramasList = createTransformer((buildingID) => {
     const panoramases = this.buildings[buildingID] || [];
 
-    return panoramases.map(panoramasID => this.panoramases[panoramasID] || {});
+    return panoramases
+      .map(panoramasID => formatPanoramas(this.panoramases[panoramasID]))
+      .sort((a, b) => a.index - b.index);
   });
 
   @action.bound
