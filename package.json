@@ -23,6 +23,8 @@
     "rimraf": "~2.6.3"
   },
   "dependencies": {
+    "@firebase/app": "~0.3.6",
+    "@firebase/database": "~0.3.9",
     "react": "~16.7.0",
     "react-dom": "~16.7.0"
   },
