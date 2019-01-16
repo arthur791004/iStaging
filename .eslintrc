@@ -5,5 +5,8 @@
     "import/resolver": {
       "babel-module": {}
     }
+  },
+  "rules": {
+    "no-unused-vars": ["warn"]
   }
 }
