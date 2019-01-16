@@ -50,8 +50,17 @@ class Panoramases {
       .then((snapshot) => {
         const panoramases = snapshot.val();
 
+        if (!panoramases) {
+          throw new Error(`Cannot find panoramases with buildingID: ${buildingID}`);
+        }
+
         this.setBuilding(buildingID, panoramases);
         this.setPanoramases(panoramases);
+      })
+      .catch((error) => {
+        this.setError(error);
+      })
+      .then(() => {
         this.setIsLoading(false);
       });
   }

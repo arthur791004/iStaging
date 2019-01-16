@@ -1,9 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router } from 'react-router';
 
-import '@/setup';
+import { getHistory } from '@/setup';
 import App from './App';
 
-const container = document.getElementById('root');
+const initApp = async () => {
+  const container = document.getElementById('root');
+  const history = await getHistory();
 
-ReactDOM.render(<App />, container);
+  ReactDOM.render(
+    <Router history={history}>
+      <App />
+    </Router>,
+    container
+  );
+};
+
+initApp();

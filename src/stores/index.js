@@ -1,4 +1,8 @@
-const stores = {};
+import router from '@/stores/router';
+
+const stores = {
+  router,
+};
 
 export const getStore = (storeName) => {
   if (stores[storeName]) {

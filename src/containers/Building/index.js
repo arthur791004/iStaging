@@ -6,6 +6,7 @@ import getOwnPropsParams from '@/utils/getOwnPropsParams';
 import withStores from '@/providers/StoresProvider/withStores';
 import LazyPanoramasVR from '@/components/PanoramasVR/Lazy';
 import LazyPanoramasList from '@/components/PanoramasList/Lazy';
+import Error from './Error';
 
 const stores = ['panoramases'];
 
@@ -33,7 +34,9 @@ class PanoramasList extends React.Component {
     const { selected } = this.state;
     const panoramasList = panoramases.selectPanoramasList(buildingID);
 
-    if (panoramases.isLoading || panoramasList.length === 0) {
+    if (panoramases.error) {
+      return <Error>{`Oops...${panoramases.error}`}</Error>;
+    } else if (panoramases.isLoading || panoramasList.length === 0) {
       return <div>Loading...</div>;
     }
 
