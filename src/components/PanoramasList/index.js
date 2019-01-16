@@ -3,7 +3,6 @@ import { arrayOf, func, number, string, shape } from 'prop-types';
 import styled from 'styled-components';
 
 import LazyPanoramasThumbnail from '@/components/PanoramasThumbnail/Lazy';
-// import PanoramasThumbnailPlaceholder from '@/components/PanoramasThumbnail/Placeholder';
 import { GAP } from './constants';
 
 const Wrapper = styled.div`
@@ -29,7 +28,7 @@ const PanoramasList = ({ panoramasList, selected, handleClick }) => (
       {panoramasList.map(({ id, index, thumbnail, category }) => (
         <LazyPanoramasThumbnail
           key={id}
-          thumbnail={thumbnail}
+          src={thumbnail}
           category={category}
           isActive={index === selected}
           gap={GAP}
