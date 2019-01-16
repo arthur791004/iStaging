@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/iStaging/static/js/NotFoundPage.70854cd8.chunk.js"
   },
   {
-    "revision": "d0891692033d37341c98",
-    "url": "/iStaging/static/js/main.d0891692.chunk.js"
+    "revision": "e2ebf6b12462cd1deade",
+    "url": "/iStaging/static/js/main.e2ebf6b1.chunk.js"
   },
   {
     "revision": "6a726e07301e3687755e",
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/iStaging/static/js/1.9ebf04ca.chunk.js"
   },
   {
-    "revision": "b8556ac736ad8069a57501c4baa8ff88",
+    "revision": "9f4626f6cac0732abde9bd78190c5038",
     "url": "/iStaging/index.html"
   }
 ];

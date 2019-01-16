@@ -5,8 +5,8 @@
   "static/js/1.9ebf04ca.chunk.js.map": "/iStaging/static/js/1.9ebf04ca.chunk.js.map",
   "panoramases-constants.js": "/iStaging/static/js/panoramases-constants.9de7c3c2.chunk.js",
   "panoramases-constants.js.map": "/iStaging/static/js/panoramases-constants.9de7c3c2.chunk.js.map",
-  "main.js": "/iStaging/static/js/main.d0891692.chunk.js",
-  "main.js.map": "/iStaging/static/js/main.d0891692.chunk.js.map",
+  "main.js": "/iStaging/static/js/main.e2ebf6b1.chunk.js",
+  "main.js.map": "/iStaging/static/js/main.e2ebf6b1.chunk.js.map",
   "Building.js": "/iStaging/static/js/Building.98a31700.chunk.js",
   "Building.js.map": "/iStaging/static/js/Building.98a31700.chunk.js.map",
   "NotFoundPage.js": "/iStaging/static/js/NotFoundPage.70854cd8.chunk.js",
@@ -29,6 +29,6 @@
   "runtime~main.js.map": "/iStaging/static/js/runtime~main.7b831b04.js.map",
   "static/media/loading-circle.svg": "/iStaging/static/media/loading-circle.705e066e.svg",
   "index.html": "/iStaging/index.html",
-  "precache-manifest.583c1545376f06936eb8a598b55c1bb2.js": "/iStaging/precache-manifest.583c1545376f06936eb8a598b55c1bb2.js",
+  "precache-manifest.c3157c6416da3f27db16477e058ce5b8.js": "/iStaging/precache-manifest.c3157c6416da3f27db16477e058ce5b8.js",
   "service-worker.js": "/iStaging/service-worker.js"
 }
