@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 
 import getOwnPropsParams from '@/utils/getOwnPropsParams';
 import withStores from '@/providers/StoresProvider/withStores';
+import Loading from '@/components/Loading';
 import LazyPanoramasVR from '@/components/PanoramasVR/Lazy';
 import LazyPanoramasList from '@/components/PanoramasList/Lazy';
 import Error from './Error';
@@ -37,14 +38,14 @@ class PanoramasList extends React.Component {
     if (panoramases.error) {
       return <Error>{`Oops...${panoramases.error}`}</Error>;
     } else if (panoramases.isLoading || panoramasList.length === 0) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
 
     const { id, src, thumbnail } = panoramasList[selected];
 
     return (
       <React.Fragment>
-        <React.Suspense fallback="">
+        <React.Suspense fallback={<Loading />}>
           <LazyPanoramasVR id={id} src={src} thumbnail={thumbnail} />
         </React.Suspense>
         <React.Suspense fallback="">

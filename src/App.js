@@ -6,13 +6,14 @@ import { NORMAL_THEMES } from '@/constants/themes';
 import render from '@/utils/render';
 import DevTools from '@/components/DevTools';
 import GlobalStyle from '@/components/GlobalStyle';
+import Loading from '@/components/Loading';
 import LazyHomePage from '@/pages/Home/Lazy';
 import LazyNotFoundPage from '@/pages/NotFound/Lazy';
 import LazyBuildingPage from '@/pages/Building/Lazy';
 
 const App = () => (
   <ThemeProvider theme={NORMAL_THEMES}>
-    <React.Suspense fallback="">
+    <React.Suspense fallback={<Loading />}>
       <DevTools />
       <GlobalStyle />
       <Switch location={location}>
