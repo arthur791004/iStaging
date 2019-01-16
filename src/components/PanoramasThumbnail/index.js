@@ -3,11 +3,11 @@ import { bool, func, string } from 'prop-types';
 import styled, { css } from 'styled-components';
 import { ellipsis } from 'polished';
 
-const Thumbnail = styled.div.attrs({
-  style: props => ({
+const Thumbnail = styled.div.attrs(props => ({
+  style: {
     backgroundImage: `url(${props.src})`,
-  }),
-})`
+  },
+}))`
   width: 100%;
   height: 100%;
   background-size: cover;
