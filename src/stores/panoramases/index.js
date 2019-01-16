@@ -4,7 +4,7 @@ import { createTransformer } from 'mobx-utils';
 import Firebase from '@/services/Firebase';
 import { NAME, ORDER_KEY } from './constants';
 
-const formatPanoramas = (panoramas) => {
+const formatPanoramas = (id, panoramas) => {
   if (!panoramas) {
     return {};
   }
@@ -12,6 +12,7 @@ const formatPanoramas = (panoramas) => {
   const { data: { index, desktopUrl, thumbnail, category } } = panoramas;
 
   return {
+    id,
     index,
     thumbnail,
     category,
@@ -29,7 +30,7 @@ class Panoramases {
     const panoramases = this.buildings[buildingID] || [];
 
     return panoramases
-      .map(panoramasID => formatPanoramas(this.panoramases[panoramasID]))
+      .map(panoramasID => formatPanoramas(panoramasID, this.panoramases[panoramasID]))
       .sort((a, b) => a.index - b.index);
   });
 

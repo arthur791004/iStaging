@@ -25,17 +25,17 @@ const Wrapper = styled.div`
 
 const PanoramasList = ({ panoramasList, selected, handleClick }) => (
   <Wrapper>
-    {panoramasList.map(({ index, thumbnail, category }) => (
-      <React.Suspense key={index} fallback="...">
+    <React.Suspense fallback="">
+      {panoramasList.map(({ id, index, thumbnail, category }) => (
         <LazyPanoramasThumbnail
-          key={index}
+          key={id}
           thumbnail={thumbnail}
           category={category}
           isActive={index === selected}
           handleClick={() => handleClick(index)}
         />
-      </React.Suspense>
-    ))}
+      ))}
+    </React.Suspense>
   </Wrapper>
 );
 

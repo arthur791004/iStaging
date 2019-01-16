@@ -37,14 +37,14 @@ class PanoramasList extends React.Component {
       return <div>Loading...</div>;
     }
 
-    const { src } = panoramasList[selected];
+    const { id, src, thumbnail } = panoramasList[selected];
 
     return (
       <React.Fragment>
         <React.Suspense fallback="">
-          <LazyPanoramasVR src={src} />
+          <LazyPanoramasVR id={id} src={src} thumbnail={thumbnail} />
         </React.Suspense>
-        <React.Suspense fallback="Loading...">
+        <React.Suspense fallback="">
           <LazyPanoramasList
             panoramasList={panoramasList}
             selected={selected}
