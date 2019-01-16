@@ -97,7 +97,6 @@ class PanoromasVR extends React.PureComponent {
               dur={DURATION}
               easing="ease-in"
               attribute="material.opacity"
-              from="0"
               to="1"
             />
             <a-animation
@@ -105,7 +104,6 @@ class PanoromasVR extends React.PureComponent {
               dur={DURATION}
               easing="ease-out"
               attribute="material.opacity"
-              from="1"
               to="0"
             />
           </a-sky>
