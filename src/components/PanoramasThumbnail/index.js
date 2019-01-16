@@ -3,6 +3,8 @@ import { bool, func, number, string } from 'prop-types';
 import styled, { css } from 'styled-components';
 import { ellipsis } from 'polished';
 
+import { SIZES } from '@/constants/sizes';
+import media from '@/utils/media';
 import { THUMBNAIL_SIZES, CATEGORY_HEIGHT, CATEGORY_MARGIN_TOP } from './constants';
 
 const Thumbnail = styled.div.attrs(props => ({
@@ -20,11 +22,16 @@ const Thumbnail = styled.div.attrs(props => ({
 `;
 
 export const ThumbnailWrapper = styled.div`
-  width: ${THUMBNAIL_SIZES.MEDIUM.WIDTH}px;
-  height: ${THUMBNAIL_SIZES.MEDIUM.HEIGHT}px;
+  width: ${THUMBNAIL_SIZES[SIZES.MEDIUM].WIDTH}px;
+  height: ${THUMBNAIL_SIZES[SIZES.MEDIUM].HEIGHT}px;
   border: 5px solid ${props => props.theme.PANORAMAS_THUMBNAIL.BORDER_COLOR};
   box-sizing: border-box;
   overflow: hidden;
+
+  ${media.mobile`
+    width: ${THUMBNAIL_SIZES[SIZES.MOBILE].WIDTH}px;
+    height: ${THUMBNAIL_SIZES[SIZES.MOBILE].HEIGHT}px;
+  `};
 `;
 
 export const Category = styled.span`

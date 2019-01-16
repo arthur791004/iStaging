@@ -1,7 +1,13 @@
+import { SIZES } from '@/constants/sizes';
+
 export const THUMBNAIL_SIZES = {
-  MEDIUM: {
+  [SIZES.MEDIUM]: {
     WIDTH: 160,
     HEIGHT: 98,
+  },
+  [SIZES.MOBILE]: {
+    WIDTH: 120,
+    HEIGHT: 60,
   },
 };
 

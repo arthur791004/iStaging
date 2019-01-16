@@ -1,22 +1,29 @@
 import { action, observable } from 'mobx';
 import { createTransformer } from 'mobx-utils';
 
+import { isHandheld } from '@/services/Devices';
 import Firebase from '@/services/Firebase';
 import { NAME, ORDER_KEY } from './constants';
 
 const formatPanoramas = (id, panoramas) => {
-  if (!panoramas) {
+  if (!(panoramas && panoramas.data)) {
     return {};
   }
 
-  const { data: { index, desktopUrl, thumbnail, category } } = panoramas;
+  const {
+    index,
+    mobileUrl,
+    desktopUrl,
+    thumbnail,
+    category,
+  } = panoramas.data;
 
   return {
     id,
     index,
     thumbnail,
     category,
-    src: desktopUrl,
+    src: isHandheld() ? mobileUrl : desktopUrl,
   };
 };
 
