@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{44:function(n,i,o){"use strict";o.r(i),o.d(i,"NAME",function(){return r}),o.d(i,"ORDER_KEY",function(){return u});var r="panoramas",u="Building"}}]);
-//# sourceMappingURL=panoramases-constants.2e4b0f2f.chunk.js.map
