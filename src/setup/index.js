@@ -8,7 +8,9 @@ import { getStore } from '@/stores';
 configure({ enforceActions: 'observed' });
 
 // setup router
-const browserHistory = createBrowserHistory();
+const browserHistory = createBrowserHistory({
+  basename: process.env.PUBLIC_URL,
+});
 
 export const getHistory = async () => {
   const routerStore = await getStore('router');

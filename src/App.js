@@ -16,7 +16,7 @@ const App = () => (
     <React.Suspense fallback={<Loading />}>
       <DevTools />
       <GlobalStyle />
-      <Switch location={location}>
+      <Switch>
         <Route exact path="/" render={render(LazyHomePage)} />
         <Route path="/building" render={render(LazyBuildingPage)} />
         <Route exact path="/404" render={render(LazyNotFoundPage)} />
