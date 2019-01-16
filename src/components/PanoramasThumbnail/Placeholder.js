@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { Wrapper, ThumbnailWrapper, Category } from './';
+import { Wrapper, ThumbnailWrapper, Category } from './PanoramasThumbnail';
 import { PLACEHOLDER_BG, PLACEHOLDER_BG_SHINE } from './constants';
 
 const shine = keyframes`
@@ -39,11 +39,11 @@ const PlaceholderWrapper = styled(Wrapper)`
   }
 `;
 
-const Placeholder = props => (
-  <PlaceholderWrapper {...props}>
+const Placeholder = React.forwardRef((props, ref) => (
+  <PlaceholderWrapper {...props} ref={ref}>
     <ThumbnailWrapper />
     <Category />
   </PlaceholderWrapper>
-);
+));
 
 export default Placeholder;

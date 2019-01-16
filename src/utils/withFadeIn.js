@@ -10,7 +10,9 @@ const withFadeIn = Placeholder => (Component) => {
     };
 
     componentDidMount() {
-      this.loadImage();
+      if (this.props.src) {
+        this.loadImage();
+      }
     }
 
     componentDidUpdate(prevProps) {
@@ -48,7 +50,7 @@ const withFadeIn = Placeholder => (Component) => {
     src: string,
   };
 
-  WithFadeIn.displayName = `WithSubscription(${getDisplayName(Component)})`;
+  WithFadeIn.displayName = `WithFadeIn(${getDisplayName(Component)})`;
 
   return WithFadeIn;
 };
