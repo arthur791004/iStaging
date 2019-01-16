@@ -1,7 +1,8 @@
 import React from 'react';
 import { string } from 'prop-types';
-import styled from 'styled-components';
 import 'aframe';
+
+import Thumbnail from './Thumbnail';
 
 const EVENTS = {
   FADE_IN: 'fadein',
@@ -10,14 +11,6 @@ const EVENTS = {
 };
 
 const DURATION = 1000; // ms
-
-const Thumbnail = styled.img.attrs(props => ({
-  src: props.src,
-}))`
-  width: 100%;
-  height: 100%;
-  filter: blur(10px);
-`;
 
 class PanoromasVR extends React.PureComponent {
   state = {
