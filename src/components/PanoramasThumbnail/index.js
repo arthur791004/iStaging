@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, func, string } from 'prop-types';
+import { bool, func, number, string } from 'prop-types';
 import styled, { css } from 'styled-components';
 import { ellipsis } from 'polished';
 
@@ -29,6 +29,7 @@ const Category = styled.span`
   margin-top: 5px;
   color: ${props => props.theme.PANORAMAS_THUMBNAIL.TEXT_COLOR};
   font-size: 14px;
+  line-height: 1.2;
 
   ${ellipsis()};
 `;
@@ -57,14 +58,14 @@ const Wrapper = styled.div`
   cursor: pointer;
 
   & + & {
-    margin-left: 20px;
+    margin-left: ${props => props.gap}px;
   }
 
   ${props => (props.isActive ? activeCSS : normalCSS)};
 `;
 
-const PanoramasThumbnail = ({ thumbnail, category, isActive, handleClick }) => (
-  <Wrapper onClick={handleClick} isActive={isActive}>
+const PanoramasThumbnail = ({ thumbnail, category, isActive, handleClick, gap }) => (
+  <Wrapper onClick={handleClick} isActive={isActive} gap={gap}>
     <ThumbnailWrapper>
       <Thumbnail src={thumbnail} />
     </ThumbnailWrapper>
@@ -76,6 +77,7 @@ PanoramasThumbnail.propTypes = {
   thumbnail: string,
   category: string,
   isActive: bool,
+  gap: number,
   handleClick: func,
 };
 
