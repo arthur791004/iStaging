@@ -1,5 +1,5 @@
 // @flow
-const DEFAULT_THRESHOLD = 0.5;
+const DEFAULT_THRESHOLD = 0.1;
 
 const DEFAULT_OPTIONS = {
   threshold: DEFAULT_THRESHOLD,
