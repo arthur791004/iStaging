@@ -1,3 +1,4 @@
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import InlineSVG from 'react-inlinesvg';
 import loadingCircle from '@/assets/loading-circle.svg';
@@ -12,8 +13,7 @@ const rotate = keyframes`
   }
 `;
 
-const Loading = styled(InlineSVG).attrs(({ size = 30 }) => ({
-  src: loadingCircle,
+const LoadingSVG = styled(InlineSVG).attrs(({ size = 30 }) => ({
   size,
 }))`
   position: absolute;
@@ -32,5 +32,9 @@ const Loading = styled(InlineSVG).attrs(({ size = 30 }) => ({
     width: ${props => props.size}px;
   }
 `;
+
+const Loading = props => (
+  <LoadingSVG {...props} src={loadingCircle} />
+);
 
 export default Loading;
